@@ -148,7 +148,7 @@ fn reduce_colors(img: &Image, colors_amount: u8) -> Image {
     reduced
 }
 
-#[tauri::command]
+#[tauri::command(async)]
 fn pixelizate(
     base64_str: String,
     new_dims: (u32, u32),

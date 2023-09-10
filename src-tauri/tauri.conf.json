@@ -16,6 +16,20 @@
 			"shell": {
 				"all": false,
 				"open": true
+			},
+			"http": {
+				"all": true,
+				"request": true,
+				"scope": ["https://**/*"]
+			},
+			"path": {
+				"all": true
+			},
+			"dialog": {
+				"save": true
+			},
+			"fs": {
+				"writeFile": true
 			}
 		},
 		"bundle": {

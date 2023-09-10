@@ -6,6 +6,10 @@ import { urlToFile } from './helpers';
 import ImagePanel from './components/ImagePanel';
 import FileInputOnImage from './components/FileInputOnImage';
 import Loader from './components/Loader';
+import Settings from './components/Settings';
+import ConvertButton from './components/ConvertButton';
+import Checkboxes from './components/Checkboxes';
+import FileDownloadImage from './components/FileDownloadImage';
 
 function App() {
 	const [imageFile, setImageFile] = createSignal<null | File>(null);
@@ -20,20 +24,26 @@ function App() {
 		const reader = new FileReader();
 		reader.onloadend = async function () {
 			const base64String = reader.result as string;
+			const fileType = base64String.substring(
+				'data:image/'.length,
+				base64String.indexOf(';base64'),
+			);
 			setIsImageLoading(true);
+
 			const convertedBase64: string = await invoke('pixelizate', {
 				base64Str: base64String,
 				newDims: [scaleFactor(), scaleFactor()],
-				format: base64String.substring(
-					'data:image/'.length,
-					base64String.indexOf(';base64'),
-				),
+				format: fileType,
 				filters: [negative(), [bitwise(), bitwiseFactor()]],
 			});
+
 			setIsImageLoading(false);
-			urlToFile(convertedBase64, 'converted.png', 'image/png').then((file) => {
-				setConvertedImage(URL.createObjectURL(file));
-			});
+			const convertedFile = await urlToFile(
+				convertedBase64,
+				`converted.${fileType}`,
+				`image/${fileType}`,
+			);
+			setConvertedImage(URL.createObjectURL(convertedFile));
 		};
 		reader.readAsDataURL(imageFile() as Blob);
 	}
@@ -50,38 +60,18 @@ function App() {
 				/>
 			</ImagePanel>
 
-			<div class="settings">
-				<button
-					onClick={() => sendImage()}
-					class={`convert-btn${!imageFile() ? ' disabled-btn' : ''}`}
-					disabled={!imageFile()}
-				>
-					Convert an image
-				</button>
-				<div class="checkboxes">
-					<div class="check-container">
-						<input
-							type="checkbox"
-							id="negative-check"
-							checked={negative()}
-							onChange={() => setNegative(!negative())}
-						/>
-						<label for="negative-check" class="checkbox-label">
-							Negative
-						</label>
-					</div>
-					<div class="check-container">
-						<input
-							type="checkbox"
-							id="bit-check"
-							checked={bitwise()}
-							onChange={() => setBitwise(!bitwise())}
-						/>
-						<label for="bit-check" class="checkbox-label">
-							X-Bit
-						</label>
-					</div>
-				</div>
+			<Settings>
+				<ConvertButton onClick={sendImage} isDisabled={!imageFile()} />
+				<Checkboxes
+					items={[
+						{ name: 'Negative', value: negative, setValue: setNegative },
+						{
+							name: 'X-bit',
+							value: bitwise,
+							setValue: setBitwise,
+						},
+					]}
+				/>
 				<CustomSlider
 					min={1}
 					max={150}
@@ -96,7 +86,7 @@ function App() {
 						externalValue={bitwiseFactor}
 					/>
 				</Show>
-			</div>
+			</Settings>
 
 			<ImagePanel
 				show={Boolean(convertedImage())}
@@ -106,6 +96,7 @@ function App() {
 				<Show when={isImageLoading()}>
 					<Loader />
 				</Show>
+				<FileDownloadImage imageSrc={convertedImage()} />
 			</ImagePanel>
 		</div>
 	);

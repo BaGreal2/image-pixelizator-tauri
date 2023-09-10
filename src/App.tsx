@@ -15,6 +15,7 @@ function App() {
 	const [imageFile, setImageFile] = createSignal<null | File>(null);
 	const [convertedImage, setConvertedImage] = createSignal<null | string>(null);
 	const [scaleFactor, setScaleFactor] = createSignal<number>(1);
+	const [grayscale, setGrayscale] = createSignal(false);
 	const [negative, setNegative] = createSignal(false);
 	const [bitwise, setBitwise] = createSignal(false);
 	const [bitwiseFactor, setBitwiseFactor] = createSignal<number>(2);
@@ -34,7 +35,7 @@ function App() {
 				base64Str: base64String,
 				newDims: [scaleFactor(), scaleFactor()],
 				format: fileType,
-				filters: [negative(), [bitwise(), bitwiseFactor()]],
+				filters: [negative(), [bitwise(), bitwiseFactor()], grayscale()],
 			});
 
 			setIsImageLoading(false);
@@ -69,6 +70,11 @@ function App() {
 							name: 'X-bit',
 							value: bitwise,
 							setValue: setBitwise,
+						},
+						{
+							name: 'Grayscale',
+							value: grayscale,
+							setValue: setGrayscale,
 						},
 					]}
 				/>

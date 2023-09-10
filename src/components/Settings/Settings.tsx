@@ -1,4 +1,5 @@
 import { JSXElement } from 'solid-js';
+import './Settings.css';
 
 interface SettingsProps {
 	children: JSXElement;

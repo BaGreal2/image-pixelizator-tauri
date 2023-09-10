@@ -1,3 +1,5 @@
+import './FileInputOnImage.css';
+
 interface FileInputOnImageProps {
 	onChange: (file: File) => void;
 	imageFile: null | File;

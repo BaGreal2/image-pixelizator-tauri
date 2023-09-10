@@ -153,9 +153,12 @@ fn pixelizate(
     base64_str: String,
     new_dims: (u32, u32),
     format: String,
-    filters: (bool, (bool, u8)),
+    filters: (bool, (bool, u8), bool),
 ) -> String {
-    let img = base64_to_image(&base64_str, &format);
+    let mut img = base64_to_image(&base64_str, &format);
+    if filters.2 {
+        img = img.grayscale();
+    }
     let old_dims = img.dimensions();
     let img_rgba = img.to_rgba8();
 

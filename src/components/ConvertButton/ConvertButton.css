@@ -1,0 +1,26 @@
+.convert-btn {
+	height: 40px;
+	width: 100%;
+	cursor: pointer;
+	margin-bottom: 40px;
+	border: none;
+	border-radius: 5px;
+	border: 2px solid #2f65b5;
+	color: #2f65b5;
+	background: none;
+	transition: background 250ms ease-in-out;
+}
+
+.convert-btn:hover {
+	background-color: rgba(47, 101, 181, 0.2);
+}
+
+.disabled-btn {
+	color: black;
+	border-color: black;
+	cursor: default;
+}
+
+.disabled-btn:hover {
+	background: none;
+}

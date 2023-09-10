@@ -1,6 +1,7 @@
 import { save } from '@tauri-apps/api/dialog';
 import { writeBinaryFile } from '@tauri-apps/api/fs';
 import { downloadDir } from '@tauri-apps/api/path';
+import './FileDownloadImage.css';
 
 interface FileDownloadImageProps {
 	imageSrc: string | null;

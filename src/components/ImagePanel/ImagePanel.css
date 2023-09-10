@@ -1,0 +1,19 @@
+.image-container {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 35%;
+	aspect-ratio: 1;
+	border: 2px solid yellow;
+	border-radius: 10px;
+}
+
+.file-image {
+	width: 100%;
+	transition: filter 200ms ease;
+}
+
+.tanned-img {
+	filter: blur(2px) brightness(0.4);
+}

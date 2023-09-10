@@ -1,3 +1,5 @@
+import './ConvertButton.css';
+
 interface ConvertButtonProps {
 	onClick: () => Promise<void>;
 	isDisabled: boolean;

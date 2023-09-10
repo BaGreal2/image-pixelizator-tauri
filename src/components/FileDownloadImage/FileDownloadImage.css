@@ -1,0 +1,32 @@
+.download-image {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: default;
+	text-decoration: none;
+	width: 90%;
+	height: 90%;
+	background-color: rgba(232, 197, 56, 0.2);
+	border: 2px solid rgb(232, 197, 56);
+	border-radius: 10px;
+	color: #b5962f;
+	opacity: 0;
+	transition: all 250ms ease-in-out;
+}
+
+.download-image:hover {
+	background-color: rgba(232, 197, 56, 0.3);
+}
+
+.label-with-image {
+	opacity: 0;
+}
+
+.label-with-image:hover {
+	cursor: pointer;
+	opacity: 1;
+}

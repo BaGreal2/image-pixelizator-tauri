@@ -1,4 +1,5 @@
 import { Accessor, createSignal } from 'solid-js';
+import './CustomSlider.css';
 
 interface CustomSliderProps {
 	min: number;

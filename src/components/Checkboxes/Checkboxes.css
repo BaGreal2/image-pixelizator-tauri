@@ -1,0 +1,8 @@
+.checkboxes {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+	color: #ffffff;
+	font-size: 14px;
+}

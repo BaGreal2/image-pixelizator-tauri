@@ -1,0 +1,30 @@
+.image-label {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	width: 90%;
+	height: 90%;
+	background-color: rgba(232, 197, 56, 0.2);
+	border: 2px dashed rgb(232, 197, 56);
+	border-radius: 10px;
+	color: #b5962f;
+	opacity: 1;
+	transition: all 250ms ease-in-out;
+}
+
+.image-label:hover {
+	background-color: rgba(232, 197, 56, 0.3);
+}
+
+.label-with-image {
+	opacity: 0;
+}
+.label-with-image:hover {
+	cursor: pointer;
+	opacity: 1;
+}

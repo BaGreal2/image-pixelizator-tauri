@@ -1,4 +1,5 @@
 import { Accessor, Setter } from 'solid-js';
+import './CustomCheckbox.css';
 
 interface CustomCheckboxProps {
 	name: string;

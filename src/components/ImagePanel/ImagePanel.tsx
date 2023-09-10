@@ -1,4 +1,5 @@
 import { JSXElement, Show } from 'solid-js';
+import './ImagePanel.css';
 
 interface ImagePanelProps {
 	show: boolean;

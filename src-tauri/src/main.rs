@@ -1,3 +1,5 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 use base64::{engine::general_purpose, Engine as _};
 use image::{
     load_from_memory_with_format, DynamicImage, GenericImageView, ImageBuffer, ImageFormat,
@@ -6,9 +8,6 @@ use image::{
 use regex::Regex;
 use std::io::Cursor;
 
-// // Prevents additional console window on Windows in release, DO NOT REMOVE!!
-// #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-//
 type Image = ImageBuffer<Rgba<u8>, Vec<u8>>;
 
 fn get_format_enum(format_str: &String) -> ImageFormat {

@@ -13,23 +13,97 @@
 	"tauri": {
 		"allowlist": {
 			"all": false,
-			"shell": {
+			"clipboard": {
 				"all": false,
-				"open": true
+				"readText": false,
+				"writeText": false
+			},
+			"dialog": {
+				"all": false,
+				"ask": false,
+				"confirm": false,
+				"message": true,
+				"open": false,
+				"save": true
+			},
+			"fs": {
+				"all": false,
+				"copyFile": false,
+				"createDir": true,
+				"exists": false,
+				"readDir": true,
+				"readFile": false,
+				"removeDir": false,
+				"removeFile": false,
+				"renameFile": false,
+				"scope": ["$APP/*", "$DOCUMENT/*", "$DOWNLOAD/*"],
+				"writeFile": true
+			},
+			"globalShortcut": {
+				"all": false
 			},
 			"http": {
 				"all": true,
 				"request": true,
 				"scope": ["https://**/*"]
 			},
+			"notification": {
+				"all": true
+			},
+			"os": {
+				"all": true
+			},
 			"path": {
 				"all": true
 			},
-			"dialog": {
-				"save": true
+			"process": {
+				"all": false,
+				"exit": false,
+				"relaunch": true,
+				"relaunchDangerousAllowSymlinkMacos": false
 			},
-			"fs": {
-				"writeFile": true
+			"protocol": {
+				"all": false,
+				"asset": false,
+				"assetScope": []
+			},
+			"shell": {
+				"all": false,
+				"execute": false,
+				"open": ".*",
+				"scope": [],
+				"sidecar": false
+			},
+			"window": {
+				"all": false,
+				"center": false,
+				"close": true,
+				"create": false,
+				"hide": false,
+				"maximize": true,
+				"minimize": true,
+				"print": false,
+				"requestUserAttention": false,
+				"setAlwaysOnTop": false,
+				"setCursorGrab": false,
+				"setCursorIcon": false,
+				"setCursorPosition": false,
+				"setCursorVisible": false,
+				"setDecorations": true,
+				"setFocus": true,
+				"setFullscreen": true,
+				"setIcon": false,
+				"setMaxSize": false,
+				"setMinSize": false,
+				"setPosition": false,
+				"setResizable": false,
+				"setSize": true,
+				"setSkipTaskbar": false,
+				"setTitle": false,
+				"show": false,
+				"startDragging": true,
+				"unmaximize": true,
+				"unminimize": true
 			}
 		},
 		"bundle": {
